@@ -9,6 +9,20 @@ void TDicionario_Inicia(TDicionario *t){
     t->v = (TRegistro*) malloc(t->max * sizeof(TRegistro));
 }
 
+void lerMalhas(int m, TDicionario *dicionario, int *pos, int *alvo) {
+
+    //dicionario->v = (TRegistro*) realloc(dicionario->v, m * sizeof(TRegistro));
+
+    for(int i = 0; i < m; i++){
+        scanf("%d", &dicionario->v[i].Chave);
+        printf("chego aqui %d\n", i);
+        printf("chego aqui %d\n", dicionario->v[i].Chave);
+    }
+
+    scanf("%d %d", pos, alvo);
+    
+}
+
 int TDicionario_find(TDicionario *t, TChave x){
     return TDicionario_Binaria(t, x, 0, t->n-1);
 }

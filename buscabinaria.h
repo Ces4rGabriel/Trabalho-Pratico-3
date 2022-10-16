@@ -12,6 +12,8 @@ typedef struct {
     int n, max;
 } TDicionario;
 
+void lerMalhas(int m, TDicionario *dicionario, int *pos, int *alvo);
+
 void TDicionario_Inicia(TDicionario *t);
 
 int TDicionario_find(TDicionario *t, TChave x);
