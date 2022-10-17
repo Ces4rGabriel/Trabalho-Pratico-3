@@ -5,14 +5,13 @@
 
 //inicia um dicionário
 void TDicionario_Inicia(TDicionario *t, int malhas){
-    t->n = 0;
     t->cont = 0;
     t->max = malhas;
     t->v = (TRegistro*) malloc(t->max * sizeof(TRegistro));
 }
 
 int TDicionario_find(TDicionario *t, TChave x){
-    return TDicionario_Binaria(t, x, 0, t->n-1);
+    return TDicionario_Binaria(t, x, 0, t->max-1);
 }
 
 int CheckPos(TDicionario *t, int pos, TChave x){
@@ -23,27 +22,17 @@ int CheckPos(TDicionario *t, int pos, TChave x){
 
 int TDicionario_Binaria(TDicionario *t, TChave x, int esq, int dir){
     
-    int meio = floor((esq + dir)/2);
-
-    if(t->v[meio].Chave != x && esq == dir){
-        return -1;
-    }
-    else if(x > t->v[meio].Chave){
-        t->cont++;
-        return TDicionario_Binaria(t, x, meio+1, dir);
-    }
-    else if(x < t->v[meio].Chave){
-        t->cont++;
-        return TDicionario_Binaria(t, x, esq, meio-1);
-    }
-    else return meio;
+if(esq > dir) return -1;
+    int meio = (esq + dir)/2;
+    if(t->v[meio].Chave == x) return meio;
+    else if(t->v[meio].Chave > x) return TDicionario_Binaria(t, x, esq, meio-1);
+    else return TDicionario_Binaria(t, x, meio+1, dir);
 }
 
 void lerMalhas(int m, TDicionario *dicionario, int *pos, int *alvo) {
 
     for(int i = 0; i < m; i++){
         scanf("%d", &dicionario->v[i].Chave);
-        dicionario->n++;
     }
     scanf("%d %d", pos, alvo);
 
