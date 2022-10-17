@@ -12,6 +12,7 @@ int main(){
     //printf("Dicionario inicializado\n");
 
     for (int i = 0; i < casos; i++){
+        dicionario.cont = 0;
         lerMalhas(malhas, &dicionario, &posDesejada, &alvo);
         //printf("chequei malhas\n");
         aux = CheckPos(&dicionario, posDesejada, alvo); //checa se o jogador acertou o alvo
