@@ -16,7 +16,7 @@ int CheckPos(TDicionario *t, int pos, TChave x);
 
 void lerMalhas(int m, TDicionario *dicionario, int *pos, int *alvo);
 
-void exibeResultado(int PosDesejada, int PosEncontrada);
+void exibeResultado(int PosDesejada, int PosEncontrada, int interacoes);
 
 void TDicionario_Inicia(TDicionario *t, int malhas);
 
