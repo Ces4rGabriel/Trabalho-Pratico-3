@@ -9,20 +9,6 @@ void TDicionario_Inicia(TDicionario *t){
     t->v = (TRegistro*) malloc(t->max * sizeof(TRegistro));
 }
 
-void lerMalhas(int m, TDicionario *dicionario, int *pos, int *alvo) {
-
-    //dicionario->v = (TRegistro*) realloc(dicionario->v, m * sizeof(TRegistro));
-
-    for(int i = 0; i < m; i++){
-        scanf("%d", &dicionario->v[i].Chave);
-        printf("chego aqui %d\n", i);
-        printf("chego aqui %d\n", dicionario->v[i].Chave);
-    }
-
-    scanf("%d %d", pos, alvo);
-    
-}
-
 int TDicionario_find(TDicionario *t, TChave x){
     return TDicionario_Binaria(t, x, 0, t->n-1);
 }
@@ -32,4 +18,49 @@ int TDicionario_Binaria(TDicionario *t, TChave x, int esq, int dir){
     else if(x > t->v[meio].Chave) return TDicionario_Binaria(t, x, meio+1, dir);
     else if(x < t->v[meio].Chave) return TDicionario_Binaria(t, x, esq, meio-1);
     else return meio;
+}
+
+void lerMalhas(int m, TDicionario *dicionario, int *pos, int *alvo) {
+
+    for(int i = 0; i < m; i++)
+        scanf("%d", &dicionario->v[i].Chave);
+
+    scanf("%d %d", pos, alvo);
+
+}
+
+void exibeResultado(int posDesejada, int posEncontrada) {
+    
+
+    if(posDesejada != posEncontrada){
+        int resto = posDesejada % 10;
+
+        if(posEncontrada == -1 && resto == 1 ){
+            printf("Disparo incorreto: Malha sem o porta aviões %d\n", posDesejada);
+        }else if(posEncontrada == -1 && resto == 2){
+            printf("Disparo incorreto: Malha sem o encouraçado %d\n", posDesejada);
+        }else if(posEncontrada == -1 && resto == 3){
+            printf("Disparo incorreto: Malha sem o cruzador %d\n", posDesejada);
+        }else if(posEncontrada == -1 && resto == 4){
+            printf("Disparo incorreto: Malha sem a fragata %d\n", posDesejada);
+        }else if(posEncontrada == -1 && resto == 5){
+            printf("Disparo incorreto: Malha sem o submarino %d\n", posDesejada);
+        }
+
+    } else if (posDesejada == posEncontrada) {
+         int resto = posEncontrada % 10;
+
+        if(resto == 1) {
+            printf("Disparo certeiro: O porta aviões %d afundou\n", posEncontrada);
+        }else if (resto == 2) {
+            printf("Disparo certeiro: O encouraçado %d afundou\n", posEncontrada);
+        }else if (resto == 3) {
+            printf("Disparo certeiro: O cruzador %d afundou\n", posEncontrada);
+        }else if (resto == 4) {
+            printf("Disparo certeiro: A fragata %d afundou\n", posEncontrada);
+        }else if (resto == 5) {
+            printf("Disparo certeiro: O submarino %d afundou\n", posEncontrada);
+        }
+    }
+
 }

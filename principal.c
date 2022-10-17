@@ -3,26 +3,20 @@
 #include "buscabinaria.h"
 
 int main(){
-    int c, m, posDesejada, alvo, posEncontrada;
+    int c, m, posDesejada, alvo, posEncontrada = -1;
     TDicionario dicionario;
 
     scanf("%d %d", &c, &m);
 
     TDicionario_Inicia(&dicionario);
-    printf("chego aqu2i\n");
+    printf("Dicionario inicializado\n");
 
     for (int i = 0; i < c; i++){
         lerMalhas(m, &dicionario, &posDesejada, &alvo);
-        printf("chego aqui\n");
+        printf("chequei malhas\n");
         posEncontrada = TDicionario_find(&dicionario, alvo);
-        printf("chego aqui3\n");
-
-        if(posEncontrada != posDesejada){
-            printf("Nao foi a posição! desejada: %d encontrada: %d \n", posDesejada, posEncontrada);
-        }else if(posDesejada == posEncontrada){
-            printf("Achou! desejada: %d encontrada: %d \n", posDesejada, posEncontrada);
-        }
-
+        printf("encontrei\n");
+        exibeResultado(posDesejada, posEncontrada);
     }
 
 
