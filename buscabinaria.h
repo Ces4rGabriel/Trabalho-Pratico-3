@@ -24,8 +24,6 @@ int TDicionario_find(TDicionario *t, TChave x, int posDesejada);
 
 int TDicionario_Binaria(TDicionario *t, TChave x, int esq, int dir);
 
-void Results(int alvo, int achou);
-
 void LiberaMemoria(TDicionario *t);
 
 

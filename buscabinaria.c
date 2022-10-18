@@ -5,8 +5,8 @@
 
 //inicia um dicionário
 void TDicionario_Inicia(TDicionario *t, int malhas){
-    t->cont = 0;
-    t->max = malhas;
+    t->cont = 0; //contador de iteraçoes
+    t->max = malhas; //numero de malhas
     t->v = (TRegistro*) malloc(t->max * sizeof(TRegistro));
 }
 
@@ -16,6 +16,7 @@ void LiberaMemoria(TDicionario *t){
 
 int TDicionario_find(TDicionario *t, TChave x, int posDesejada){
     t->cont++;
+    //verifica a posiçãoa do jogador e faz uma divisão apartir dela
     if(t->v[posDesejada].Chave > x){
         return TDicionario_Binaria(t, x, 0, posDesejada-1);
     }else
@@ -47,7 +48,7 @@ if(esq > dir) return -1;
 }
 
 void lerMalhas(int m, TDicionario *dicionario, int *pos, int *alvo) {
-
+    //le as malhas e armazena no dicionario
     for(int i = 0; i < m; i++){
         scanf("%d", &dicionario->v[i].Chave);
     }
@@ -101,29 +102,4 @@ void exibeResultado(int posDesejada, int posEncontrada, int interacoes) {
             printf("Disparo certeiro: O submarino %d afundou!\n", posEncontrada);
         }
     }
-}
-
-void Results(int alvo, int achou){
-    int resto = alvo % 10;
-    if (achou == 1){
-        switch (resto)
-        {
-        case 1:
-            printf("Disparo certeiro: O porta aviões %d afundou!\n", alvo);
-            break;
-        case 2:
-            printf("Disparo certeiro: O encouraçado %d afundou!\n", alvo);
-            break;
-        case 3:
-            printf("Disparo certeiro: O cruzador %d afundou!\n", alvo);
-            break;
-        case 4:
-            printf("Disparo certeiro: A fragata %d afundou!\n", alvo);
-            break;
-        case 5:
-            printf("Disparo certeiro: O submarino %d afundou!\n", alvo);
-            break;
-        }
-    }
-    // deve passar o número de iteraçoes
 }
