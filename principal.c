@@ -20,7 +20,7 @@ int main(){
                 Results(alvo, 1);
                 continue;
             }else{ // se errou
-                posEncontrada = TDicionario_find(&dicionario, alvo);
+                posEncontrada = TDicionario_find(&dicionario, alvo, posDesejada);
                 exibeResultado(alvo, posEncontrada, dicionario.cont);
             }
         //se não acertou procura o alvo
@@ -28,7 +28,6 @@ int main(){
         //printf("encontrei\n");
         //exibeResultado(posDesejada, posEncontrada);
     }
-
-
+    LiberaMemoria(&dicionario);
     return 0;
 }

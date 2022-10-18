@@ -10,8 +10,16 @@ void TDicionario_Inicia(TDicionario *t, int malhas){
     t->v = (TRegistro*) malloc(t->max * sizeof(TRegistro));
 }
 
-int TDicionario_find(TDicionario *t, TChave x){
-    return TDicionario_Binaria(t, x, 0, t->max-1);
+void LiberaMemoria(TDicionario *t){
+    free(t->v);
+}
+
+int TDicionario_find(TDicionario *t, TChave x, int posDesejada){
+    t->cont++;
+    if(t->v[posDesejada].Chave > x){
+        return TDicionario_Binaria(t, x, 0, posDesejada-1);
+    }else
+        return TDicionario_Binaria(t, x, posDesejada+1, t->max-1);
 }
 
 int CheckPos(TDicionario *t, int pos, TChave x){
@@ -23,7 +31,7 @@ int CheckPos(TDicionario *t, int pos, TChave x){
 int TDicionario_Binaria(TDicionario *t, TChave x, int esq, int dir){
     
 if(esq > dir) return -1;
-    int meio = (esq + dir)/2;
+    int meio = floor((esq + dir)/2);
     t->cont++;
     if(t->v[meio].Chave == x){  
         return meio;

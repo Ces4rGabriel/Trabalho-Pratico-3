@@ -20,11 +20,13 @@ void exibeResultado(int PosDesejada, int PosEncontrada, int interacoes);
 
 void TDicionario_Inicia(TDicionario *t, int malhas);
 
-int TDicionario_find(TDicionario *t, TChave x);
+int TDicionario_find(TDicionario *t, TChave x, int posDesejada);
 
 int TDicionario_Binaria(TDicionario *t, TChave x, int esq, int dir);
 
 void Results(int alvo, int achou);
+
+void LiberaMemoria(TDicionario *t);
 
 
 #endif // buscabinaria_h
