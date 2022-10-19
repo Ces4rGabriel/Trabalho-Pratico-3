@@ -17,7 +17,7 @@ int main(){
         //printf("chequei malhas\n");
         aux = CheckPos(&dicionario, posDesejada, alvo); //checa se o jogador acertou o alvo
             if(aux >= 0){ // se acertou
-                exibeResultado(posDesejada, posDesejada, dicionario.cont); //problema - arrumar
+                exibeResultado(alvo, alvo, dicionario.cont); //problema - arrumar
                 continue;
             }else{ // se errou
                 posEncontrada = TDicionario_find(&dicionario, alvo);
