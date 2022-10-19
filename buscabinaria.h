@@ -20,7 +20,7 @@ void exibeResultado(int PosDesejada, int PosEncontrada, int interacoes);
 
 void TDicionario_Inicia(TDicionario *t, int malhas);
 
-int TDicionario_find(TDicionario *t, TChave x, int posDesejada);
+int TDicionario_find(TDicionario *t, TChave x);
 
 int TDicionario_Binaria(TDicionario *t, TChave x, int esq, int dir);
 

@@ -14,13 +14,8 @@ void LiberaMemoria(TDicionario *t){
     free(t->v);
 }
 
-int TDicionario_find(TDicionario *t, TChave x, int posDesejada){
-    t->cont++;
-    //verifica a posiçãoa do jogador e faz uma divisão apartir dela
-    if(t->v[posDesejada].Chave > x){
-        return TDicionario_Binaria(t, x, 0, posDesejada-1);
-    }else
-        return TDicionario_Binaria(t, x, posDesejada+1, t->max-1);
+int TDicionario_find(TDicionario *t, TChave x){
+    return TDicionario_Binaria(t, x, 0, t->max-1);
 }
 
 int CheckPos(TDicionario *t, int pos, TChave x){
